@@ -1,7 +1,8 @@
 use std::env;
-use std::fs;
 use std::process;
 use std::error::Error;
+
+use grrep::Config;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -15,7 +16,7 @@ fn main() {
     println!("searching for {}", cfg.query);
     println!("in {}", cfg.filename);
 
-    if let Err(e) = run(cfg) {
+    if let Err(e) = grrep::run(cfg) {
         println!("Application error: {}", e);
         process::exit(1);
     }
